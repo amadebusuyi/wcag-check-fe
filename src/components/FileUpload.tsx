@@ -26,6 +26,7 @@ const FileUpload: React.FC<FileUploadProps> = ({ onResult, onError, onRemove }) 
 
   const handleFileChange = (e: ChangeEvent<HTMLInputElement>) => {
     onError('');
+    onRemove(true);
     if (e.target.files && e.target.files.length > 0) {
       setSelectedFile(e.target.files[0]);
     }
@@ -74,6 +75,7 @@ const FileUpload: React.FC<FileUploadProps> = ({ onResult, onError, onRemove }) 
         id="file-upload"
         name="file"
         accept=".html"
+        placeholder="Upload file"
         onChange={handleFileChange}
         aria-required="true"
       />
@@ -104,8 +106,9 @@ const Label = styled.label`
 
 const FileInput = styled.input`
   margin-bottom: 16px;
-  padding: 8px;
+  padding: 10px;
   font-size: 1rem;
+  border: 1px solid #c4c4c4;
 `;
 
 const Button = styled.button`
